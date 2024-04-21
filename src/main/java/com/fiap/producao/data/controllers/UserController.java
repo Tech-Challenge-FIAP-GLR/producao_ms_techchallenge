@@ -1,9 +1,9 @@
-package com.fiap.producao.controllers;
+package com.fiap.producao.data.controllers;
 
-import com.fiap.producao.models.UserModel;
-import com.fiap.producao.ports.UserUseCasePort;
-import com.fiap.producao.request.UserRequest;
-import com.fiap.producao.response.UserResponse;
+import com.fiap.producao.domain.models.UserModel;
+import com.fiap.producao.domain.ports.UserUseCasePort;
+import com.fiap.producao.data.request.UserRequest;
+import com.fiap.producao.data.response.UserResponse;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;

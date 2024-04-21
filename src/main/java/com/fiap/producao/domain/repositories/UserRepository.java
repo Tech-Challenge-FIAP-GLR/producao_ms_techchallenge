@@ -1,7 +1,7 @@
-package com.fiap.producao.repositories;
+package com.fiap.producao.domain.repositories;
 
 
-import com.fiap.producao.models.UserModel;
+import com.fiap.producao.domain.models.UserModel;
 
 public interface UserRepository {
 

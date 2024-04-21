@@ -1,7 +1,7 @@
- package com.fiap.producao.response;
+ package com.fiap.producao.data.response;
 
 
- import com.fiap.producao.models.UserModel;
+ import com.fiap.producao.domain.models.UserModel;
  import lombok.Getter;
  import lombok.NoArgsConstructor;
  import lombok.Setter;

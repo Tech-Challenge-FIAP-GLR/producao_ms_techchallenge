@@ -1,10 +1,10 @@
-package com.fiap.producao.usecases;
+package com.fiap.producao.domain.usecases;
 
 
-import com.fiap.producao.models.UserModel;
-import com.fiap.producao.ports.UserUseCasePort;
-import com.fiap.producao.repositories.UserMongoRepository;
-import com.fiap.producao.repositories.UserRepository;
+import com.fiap.producao.domain.models.UserModel;
+import com.fiap.producao.domain.ports.UserUseCasePort;
+import com.fiap.producao.data.repositories.UserMongoRepository;
+import com.fiap.producao.domain.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 
 public class UserUseCase implements UserUseCasePort {

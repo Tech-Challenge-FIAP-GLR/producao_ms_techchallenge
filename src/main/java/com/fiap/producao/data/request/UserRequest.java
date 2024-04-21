@@ -1,6 +1,6 @@
-package com.fiap.producao.request;
+package com.fiap.producao.data.request;
 
-import com.fiap.producao.models.UserModel;
+import com.fiap.producao.domain.models.UserModel;
 import lombok.Getter;
 import lombok.Setter;
 

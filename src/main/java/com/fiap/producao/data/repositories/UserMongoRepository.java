@@ -1,7 +1,6 @@
-package com.fiap.producao.repositories;
+package com.fiap.producao.data.repositories;
 
-import com.fiap.producao.entities.UserEntity;
-import com.fiap.producao.models.UserModel;
+import com.fiap.producao.data.entities.UserEntity;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
 

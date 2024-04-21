@@ -1,10 +1,10 @@
-package com.fiap.producao.adapters;
+package com.fiap.producao.data.adapters;
 
 
-import com.fiap.producao.entities.UserEntity;
-import com.fiap.producao.models.UserModel;
-import com.fiap.producao.repositories.UserMongoRepository;
-import com.fiap.producao.repositories.UserRepository;
+import com.fiap.producao.data.entities.UserEntity;
+import com.fiap.producao.domain.models.UserModel;
+import com.fiap.producao.data.repositories.UserMongoRepository;
+import com.fiap.producao.domain.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;

@@ -1,4 +1,4 @@
-package com.fiap.producao.entities;
+package com.fiap.producao.data.entities;
 
 import lombok.Getter;
 import lombok.Setter;

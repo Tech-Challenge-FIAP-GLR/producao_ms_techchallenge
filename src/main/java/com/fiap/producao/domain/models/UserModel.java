@@ -1,6 +1,6 @@
- package com.fiap.producao.models;
+ package com.fiap.producao.domain.models;
 
- import com.fiap.producao.entities.UserEntity;
+ import com.fiap.producao.data.entities.UserEntity;
  import lombok.AllArgsConstructor;
  import lombok.Getter;
  import lombok.NoArgsConstructor;
