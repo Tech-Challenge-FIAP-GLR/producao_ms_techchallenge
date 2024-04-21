@@ -8,7 +8,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 @Setter
 @Getter
-@Document(collation = "user")
+@Document(collection = "user")
 public class UserEntity {
     @Id
     private String id;

@@ -42,8 +42,31 @@ public class UserController {
             @ApiResponse(responseCode = "200", description = "successful operation")
     })
     @GetMapping("/{userId}")
-    public ResponseEntity<UserResponse> getUsuario(@PathVariable Long userId) throws Exception {
+    public ResponseEntity<UserResponse> getUsuario(@PathVariable String userId) throws Exception {
         return ResponseEntity.ok(UserResponse.fromDomain(userUseCasePort.listaUsuarios(userId)));
+    }
+
+    @Operation(
+            summary = "Procura Usuário (CPF)",
+            description = "Lista um usuário com base no seu cpf")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "successful operation")
+    })
+    @GetMapping("cpf/{cpf}")
+    public ResponseEntity<UserResponse> getUsuarioPorCpf(@PathVariable String cpf) throws Exception {
+        return ResponseEntity.ok(UserResponse.fromDomain(userUseCasePort.listaUsuariosPorCpf(cpf)));
+    }
+
+    @Operation(
+            summary = "Deleta Usuário",
+            description = "Deleta um usuário do sistema")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "successful operation")
+    })
+    @DeleteMapping("/{userId}")
+    public ResponseEntity<String> deletaUsuario(@PathVariable String userId) throws Exception {
+        userUseCasePort.deletaUser(userId);
+        return ResponseEntity.ok("Usuário " + userId +" deletado com sucesso.");
     }
 
 }
