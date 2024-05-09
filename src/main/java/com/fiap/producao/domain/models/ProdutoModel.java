@@ -39,5 +39,8 @@ public class ProdutoModel {
         this.preco = preco == null ? (float) 0 : preco;
         this.categoriaModel = categoriaModel;
     }
+
+    public ProdutoModel() {
+    }
 }
 

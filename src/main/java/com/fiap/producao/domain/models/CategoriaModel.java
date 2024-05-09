@@ -28,5 +28,8 @@ public class CategoriaModel {
     public static CategoriaModel fromEntity(CategoriaEntity categoriaEntity) {
         return new CategoriaModel(categoriaEntity.getId(), categoriaEntity.getDescricao());
     }
+
+    public CategoriaModel() {
+    }
 }
 
