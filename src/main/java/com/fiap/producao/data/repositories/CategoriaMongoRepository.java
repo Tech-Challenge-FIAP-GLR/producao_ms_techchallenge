@@ -6,5 +6,5 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 
 @Hidden
 public interface CategoriaMongoRepository extends MongoRepository<CategoriaEntity, String> {
-    Object findByDescricao(String descricao);
+    CategoriaEntity findByDescricao(String descricao);
 }

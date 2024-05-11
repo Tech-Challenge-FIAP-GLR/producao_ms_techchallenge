@@ -10,5 +10,4 @@ import java.util.Optional;
 @Hidden
 public interface UserMongoRepository extends MongoRepository<UserEntity, String> {
     Optional<UserEntity> findByCpf(String cpf);
-    Optional<UserEntity> findById(String id);
 }

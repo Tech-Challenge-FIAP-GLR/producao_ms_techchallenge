@@ -9,6 +9,5 @@ import java.util.List;
 
 @Hidden
 public interface ProdutoMongoRepository extends MongoRepository<ProdutoEntity, String> {
-
     List<ProdutoEntity> findAllByCategoriaId(String id);
 }
