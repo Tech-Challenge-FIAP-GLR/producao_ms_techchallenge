@@ -28,7 +28,7 @@ jobs:
         restore-keys: ${{ runner.os }}-m2
     
     - name: Install Maven dependencies
-      working-directory: ./producao_ms_techchallenge
+#      working-directory: ./producao_ms_techchallenge
       run: mvn install
     
     - name: Set short git commit SHA
