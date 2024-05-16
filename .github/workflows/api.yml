@@ -36,4 +36,5 @@ jobs:
         run: mvn org.sonarsource.scanner.maven:sonar-maven-plugin:3.9.1.2184:sonar \
           -Dsonar.projectKey=Tech-Challenge-FIAP-GLR_producao_ms_techchallenge \
           -Dsonar.host.url=https://sonarcloud.io \
+          -Dsonar.sources=. \
           -Dsonar.login=${{ secrets.SONAR_TOKEN }}
