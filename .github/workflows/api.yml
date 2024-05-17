@@ -25,6 +25,9 @@ jobs:
           key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
           restore-keys: ${{ runner.os }}-m2
 
+      - name: Clean Maven dependencies
+        run: mvn clean
+
       - name: Install Maven dependencies
         run: mvn install
 
