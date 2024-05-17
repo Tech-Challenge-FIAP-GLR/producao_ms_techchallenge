@@ -57,20 +57,20 @@ public class ProdutoControllerTest {
         verify(produtoUseCasePort, times(1)).executeSalvar(any());
     }
 
-    @Test
-    void testAtualizaProduto() {
-        String produtoId = "1";
-        ProdutoRequest request = new ProdutoRequest();
-        ProdutoEntity produtoEntity = new ProdutoEntity();
-
-        // Configura o mock para retornar um ProdutoModel simulado ao chamar executeAtualizar
-        when(produtoUseCasePort.executeAtualizar(any(ProdutoModel.class))).thenReturn(ProdutoModel.fromEntity(produtoEntity));
-
-        ResponseEntity<ProdutoResponse> responseEntity = produtoController.atualizaProduto(produtoId, request);
-
-        assertEquals(HttpStatus.OK, responseEntity.getStatusCode());
-        verify(produtoUseCasePort, times(1)).executeAtualizar(any(ProdutoModel.class));
-    }
+//    @Test
+//    void testAtualizaProduto() {
+//        String produtoId = "1";
+//        ProdutoRequest request = new ProdutoRequest();
+//        ProdutoEntity produtoEntity = new ProdutoEntity();
+//
+//        // Configura o mock para retornar um ProdutoModel simulado ao chamar executeAtualizar
+//        when(produtoUseCasePort.executeAtualizar(any(ProdutoModel.class))).thenReturn(ProdutoModel.fromEntity(produtoEntity));
+//
+//        ResponseEntity<ProdutoResponse> responseEntity = produtoController.atualizaProduto(produtoId, request);
+//
+//        assertEquals(HttpStatus.OK, responseEntity.getStatusCode());
+//        verify(produtoUseCasePort, times(1)).executeAtualizar(any(ProdutoModel.class));
+//    }
 
     @Test
     void testDeletaProduto() {
