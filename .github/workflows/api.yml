@@ -33,4 +33,4 @@ jobs:
         uses: prompt/actions-commit-hash@v2
 
       - name: SonarQube Scan
-        run: mvn org.sonarsource.scanner.maven:sonar-maven-plugin:3.9.1.2184:sonar -Dsonar.projectKey=Tech-Challenge-FIAP-GLR_producao_ms_techchallenge -Dsonar.organization=tech-challenge-fiap-glr -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=${{ secrets.SONAR_TOKEN }} -Dsonar.coverage.jacoco.xmlReportPaths=target/site/jacoco/jacoco.xml
+        run: mvn org.sonarsource.scanner.maven:sonar-maven-plugin:3.9.1.2184:sonar -Dsonar.projectKey=Tech-Challenge-FIAP-GLR_producao_ms_techchallenge -Dsonar.organization=tech-challenge-fiap-glr -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=${{ secrets.SONAR_TOKEN }}
