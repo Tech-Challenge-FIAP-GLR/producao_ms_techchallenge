@@ -35,6 +35,7 @@ public class UserAdapter implements UserRepository {
         try {
             Optional<UserEntity> user = userMongoRepository.findById(id);
             return UserModel.fromEntity(user.get());
+//            TODO:Test build
         } catch (Exception e) {
             throw new Exception("Entity not found");
         }
