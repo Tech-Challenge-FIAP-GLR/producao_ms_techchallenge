@@ -31,6 +31,24 @@ jobs:
       - name: Install Maven dependencies
         run: mvn install
 
+      - name: docker login
+        env:
+          DOCKER_USER: ${{secrets.DOCKER_USER}}
+          DOCKER_PASSWORD: ${{secrets.DOCKER_PASSWORD}}
+        run: |
+          docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
+
+      - name: Build the Docker image
+        working-directory: .
+        run: docker build . --file Dockerfile --tag lucasax/pagamentos_ms_techchallenge
+
+      - name: Docker Push
+        run: docker push ${{secrets.DOCKER_USER}}/pagamentos_ms_techchallenge
+
+      - name: Set short git commit SHA
+        id: commit
+        uses: prompt/actions-commit-hash@v2
+
       - name: Set short git commit SHA
         id: commit
         uses: prompt/actions-commit-hash@v2
