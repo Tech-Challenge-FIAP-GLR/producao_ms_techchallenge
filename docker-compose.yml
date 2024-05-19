@@ -18,14 +18,10 @@ services:
   spring-app:
     build:
       context: ./
-      dockerfile: docker/Dockerfile
+    image: "pctheone/producao_ms_techchallenge:latest"
     restart: on-failure
     ports:
       - 8080:8080
-#    environment:
-#      SPRING_DATASOURCE_URL: jdbc:mysql://mysqldb:3306/food_techchallenge?createDatabaseIfNotExist=true&characterEncoding=UTF-8&rewriteBatchedStatements=true&enabledTLSProtocols=TLSv1,TLSv1.1,TLSv1.2
-#      SPRING_DATASOURCE_USERNAME: root
-#      SPRING_DATASOURCE_PASSWORD: 170593
     networks:
       - rede
     depends_on:
