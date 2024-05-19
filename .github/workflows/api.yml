@@ -40,10 +40,10 @@ jobs:
 
       - name: Build the Docker image
         working-directory: .
-        run: docker build . --file Dockerfile --tag lucasax/pagamentos_ms_techchallenge
+        run: docker build . --file Dockerfile --tag pctheone/producao_ms_techchallenge
 
       - name: Docker Push
-        run: docker push ${{secrets.DOCKER_USER}}/pagamentos_ms_techchallenge
+        run: docker push ${{secrets.DOCKER_USER}}/producao_ms_techchallenge
 
       - name: Set short git commit SHA
         id: commit
