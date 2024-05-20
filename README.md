@@ -1,4 +1,4 @@
-# MICRO SERVIÇO DE PRODUÇÃO
+# MICROSSERVIÇO DE PRODUÇÃO
 ## Sobre o serviço:
 Serviço responsável por cuidar da parte de gerenciamento e produção do fast food. O serviço é responsável por registrar usuários, produtos, categorias e atualizar status dos pedidos. 
 * As arquiteturas utilziadas foram Clean e Hexagonal.
