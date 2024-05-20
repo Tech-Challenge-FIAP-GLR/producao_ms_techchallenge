@@ -1,15 +1,11 @@
 version: "3.8"
 
 services:
-  mongodb:
+  mongodb-prod:
     image: 'mongo:latest'
     container_name: 'container_db'
     ports:
       - 27017:27017
-#    environment:
-#      - MYSQL_DATABASE=food_techchallenge
-#      - MYSQL_PASSWORD=170593
-#      - MYSQL_ROOT_PASSWORD=170593
     networks:
       - rede
     volumes:
@@ -25,7 +21,7 @@ services:
     networks:
       - rede
     depends_on:
-      - mongodb
+      - mongodb-prod
     volumes:
       - .m2:/root/.m2
 networks:
