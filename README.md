@@ -227,8 +227,10 @@ Path parameter
 <br />
 **Request Example:** 
 <br />
-```
-Path parameter
+```json
+{
+    "orderStatus": "Pronto"
+}
 ```
 **Response Example:** 
 ```
