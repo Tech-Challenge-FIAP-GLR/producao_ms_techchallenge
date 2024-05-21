@@ -5,6 +5,7 @@ Serviço responsável por cuidar da parte de gerenciamento e produção do fast 
 * O banco de dados é o MongoDB, banco de dados não relacional.
 
 ## Pré-Requisitos para chamada local
+* Docker
 1. Acessar a pasta do projeto via CMD.
 2. Rodar o comando "docker-compose up"
 3. Acessar as URLs para chamadas indicadas abaixo.
