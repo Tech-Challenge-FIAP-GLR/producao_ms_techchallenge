@@ -9,8 +9,11 @@ import java.util.List;
 @Getter
 @Setter
 public class Data {
-    String orderStatus;
-    String dataPedido;
-    List<ProdutoModel> produtos;
-    String id;
+    private User user;
+    private String orderStatus;
+    private String dataPedido;
+    private List<ProdutoModel> produtos;
+    private String id;
+    private double total;
+
 }

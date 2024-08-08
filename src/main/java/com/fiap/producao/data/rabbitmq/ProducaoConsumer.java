@@ -4,49 +4,54 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fiap.producao.data.dto.PedidoDTO;
 import com.fiap.producao.data.repositories.CategoriaMongoRepository;
+import com.fiap.producao.data.repositories.PedidoMongoRepository;
+import com.fiap.producao.domain.service.impl.SalvaPedidoServiceImpl;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.stereotype.Component;
 
-@Component
-public class ProducaoConsumer {
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fiap.producao.data.dto.PedidoDTO;
+import com.fiap.producao.domain.service.impl.SalvaPedidoServiceImpl;
+import com.rabbitmq.client.Channel;
+import org.springframework.amqp.core.Message;
+import org.springframework.amqp.rabbit.annotation.RabbitListener;
+import org.springframework.amqp.rabbit.listener.api.ChannelAwareMessageListener;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.messaging.handler.annotation.Payload;
+import org.springframework.stereotype.Component;
 
-//    @Autowired
-//    PedidoMongoRepository pedidoMongoRepository;
+@Component
+public class ProducaoConsumer implements ChannelAwareMessageListener {
+
+    @Autowired
+    SalvaPedidoServiceImpl salvaPedidoService;
 
     @Autowired
     ProducaoProducer producaoProducer;
 
-    @RabbitListener(queues = {"pagamentos_ms_pedido_success"})
-    public void receive(@Payload String fileBody) {
-
+    @Override
+    @RabbitListener(queues = "pagamentos_ms_pedido_success")
+    public void onMessage(Message message, Channel channel) throws Exception {
         final ObjectMapper objectMapper = new ObjectMapper();
-
-
-
         try {
-            //Recebo a MSG
+            String fileBody = new String(message.getBody());
             PedidoDTO pedido = objectMapper.readValue(fileBody, PedidoDTO.class);
-            //SALVO
-            //pedidoMongoRepository.salvarPedido(pedido);
+            pedido.getData().setOrderStatus("FINALIZADO");
 
-            //Posto
-            producaoProducer.send("pedido_finalizado", fileBody);
+            salvaPedidoService.salvarPedido(pedido);
 
+            producaoProducer.send(objectMapper.writeValueAsString(pedido), "pedido_finalizado");
 
+            System.out.println("Message " + objectMapper.writeValueAsString(pedido));
 
-
+            channel.basicAck(message.getMessageProperties().getDeliveryTag(), false);
         } catch (JsonProcessingException e) {
+            // Rejeita a mensagem e não reencaminha para a fila
+            channel.basicNack(message.getMessageProperties().getDeliveryTag(), false, false);
             throw new RuntimeException(e);
         }
-
-        //Recebo a msg,
-
-        //transformo e Json(checar se tenho que atualizar status)
-
-        //Posto na proxima fila
-        System.out.println("Message " + fileBody);
-
     }
 }

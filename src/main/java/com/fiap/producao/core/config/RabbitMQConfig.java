@@ -22,6 +22,16 @@ public class RabbitMQConfig {
     }
 
     @Bean
+    public Queue testeQueue2() {
+        return new Queue("producao_ms_pedido_finalizado", true);
+    }
+
+    @Bean
+    DirectExchange exchange2() {
+        return new DirectExchange("producao_ms_exchange");
+    }
+
+    @Bean
     Binding testeBinding(Queue testeQueue, DirectExchange exchange) {
         return BindingBuilder.bind(testeQueue).to(exchange).with("success");
     }

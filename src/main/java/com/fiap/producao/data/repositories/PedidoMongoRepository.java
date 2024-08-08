@@ -7,7 +7,7 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 
 import java.util.Optional;
 
-//@Hidden
-//public interface PedidoMongoRepository extends MongoRepository<PedidoDTO, String> {
-//    Optional<PedidoDTO> salvarPedido(PedidoDTO pedido);
-//}
+@Hidden
+public interface PedidoMongoRepository extends MongoRepository<PedidoDTO, String> {
+//    PedidoDTO salvarPedido(PedidoDTO pedido);
+}

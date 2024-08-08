@@ -6,7 +6,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 @Getter
 @Setter
-@Document(collection = "categoria")
+@Document(collection = "pedido")
 public class PedidoDTO {
     Data data;
 }
