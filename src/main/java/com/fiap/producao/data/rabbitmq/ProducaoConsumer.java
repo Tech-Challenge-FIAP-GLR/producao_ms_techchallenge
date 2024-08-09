@@ -25,7 +25,7 @@ import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.stereotype.Component;
 
 @Component
-public class ProducaoConsumer implements ChannelAwareMessageListener {
+public class ProducaoConsumer {
 
     @Autowired
     SalvaPedidoServiceImpl salvaPedidoService;
@@ -33,12 +33,12 @@ public class ProducaoConsumer implements ChannelAwareMessageListener {
     @Autowired
     ProducaoProducer producaoProducer;
 
-    @Override
     @RabbitListener(queues = "pagamentos_ms_producao_success")
-    public void onMessage(Message message, Channel channel) throws Exception {
+    public void receive(@Payload String fileBody) {
+
         final ObjectMapper objectMapper = new ObjectMapper();
+
         try {
-            String fileBody = new String(message.getBody());
             PagamentoEntity pedido = objectMapper.readValue(fileBody, PagamentoEntity.class);
             pedido.setOrderStatus("FINALIZADO");
 
@@ -48,10 +48,7 @@ public class ProducaoConsumer implements ChannelAwareMessageListener {
 
             System.out.println("Message " + objectMapper.writeValueAsString(pedido));
 
-            channel.basicAck(message.getMessageProperties().getDeliveryTag(), false);
         } catch (JsonProcessingException e) {
-            // Rejeita a mensagem e não reencaminha para a fila
-            channel.basicNack(message.getMessageProperties().getDeliveryTag(), false, false);
             throw new RuntimeException(e);
         }
     }
