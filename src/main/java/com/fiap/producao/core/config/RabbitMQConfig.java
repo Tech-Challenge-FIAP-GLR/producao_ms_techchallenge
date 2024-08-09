@@ -15,6 +15,11 @@ public class RabbitMQConfig {
     public Queue testeQueue() {
         return new Queue("pagamentos_ms_pedido_success", true);
     }
+    @Bean
+    public Queue testeQueue3() {
+        return new Queue("pagamentos_ms_pedido_success", true);
+    }
+
 
     @Bean
     DirectExchange exchange() {
