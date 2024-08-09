@@ -3,6 +3,7 @@ package com.fiap.producao.data.rabbitmq;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fiap.producao.data.dto.PedidoDTO;
+import com.fiap.producao.data.entities.PagamentoEntity;
 import com.fiap.producao.data.repositories.CategoriaMongoRepository;
 import com.fiap.producao.data.repositories.PedidoMongoRepository;
 import com.fiap.producao.domain.service.impl.SalvaPedidoServiceImpl;
@@ -33,13 +34,13 @@ public class ProducaoConsumer implements ChannelAwareMessageListener {
     ProducaoProducer producaoProducer;
 
     @Override
-    @RabbitListener(queues = "pagamentos_ms_pedido_success")
+    @RabbitListener(queues = "pagamentos_ms_producao_success")
     public void onMessage(Message message, Channel channel) throws Exception {
         final ObjectMapper objectMapper = new ObjectMapper();
         try {
             String fileBody = new String(message.getBody());
-            PedidoDTO pedido = objectMapper.readValue(fileBody, PedidoDTO.class);
-            pedido.getData().setOrderStatus("FINALIZADO");
+            PagamentoEntity pedido = objectMapper.readValue(fileBody, PagamentoEntity.class);
+            pedido.setOrderStatus("FINALIZADO");
 
             salvaPedidoService.salvarPedido(pedido);
 
